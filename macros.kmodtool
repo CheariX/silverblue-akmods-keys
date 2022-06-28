@@ -1,0 +1,2 @@
+%_kmodtool_signmodules_pubkey /etc/pki/akmods-keys/certs/public_key.der
+%_kmodtool_signmodules_privkey /etc/pki/akmods-keys/private/private_key.priv
