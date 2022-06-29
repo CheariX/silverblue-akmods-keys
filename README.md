@@ -72,6 +72,17 @@ It works for me. Hopefully also for you. I did not do any deep testing with it.
 
 To be hontest, this was the first solution that worked for me. Maybe they could also be place in `/etc/pki/akmods` but I thought it would be a good idea to have a unique place that does not lead to conflicts.
 
+## Are they keys readable by regular users?
+
+I checked the key location in
+```
+ls -al /sysroot/ostree/deploy/fedora/deploy/(rpm-ostree status --json | jq ".deployments[0].checksum" | sed 's/"//g').0/etc/pki/akmods-keys/{certs,private}
+Permission denied (os error 13)
+```
+They seem to be readable by root only.
+However, I'd recommend deleting the keys from the project directory and the `.rpm` file.
+
+
 # Acknowledgements
 
 - Thanks to [@nelsonaloysio](https://github.com/nelsonaloysio) for all the help with signed modules, akmods and for showing me [how to create RPM spec files and build them](https://github.com/nelsonaloysio/build-kmod-nvidia-signed-rpm).
