@@ -77,7 +77,7 @@ ls -al /sysroot/ostree/deploy/fedora/deploy/(rpm-ostree status --json | jq ".dep
 Permission denied (os error 13)
 ```
 They seem to be readable by root only.
-However, I'd recommend deleting the keys from the project directory and the `.rpm` file.
+However, I'd recommend deleting the `akmods-keys-0.0.2-8.fc36.noarch.rpm` file.
 
 
 # Acknowledgements
