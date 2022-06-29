@@ -2,9 +2,9 @@
 
 *Fedora Silverblue* users with *SecureBoot* enabled and `akmod`s such as `akmod-nvidia` or `akmod-VirtualBox`.
 
-# What is akmod-keys?
+# What is akmods-keys?
 
-Akmod-keys provides my solution for [Issue 272](https://github.com/fedora-silverblue/issue-tracker/issues/272) in silverblue.
+Akmods-keys provides my solution for [Issue 272](https://github.com/fedora-silverblue/issue-tracker/issues/272) in silverblue.
 
 On Fedora workstation, `akmods` signed the kernel module it creates in its `%post` operation.
 On Silverblue, the signing does not work because the keys, which are typically stored in `/etc/pki/akmods/{certs,private}` are [not accessible](https://github.com/fedora-silverblue/issue-tracker/issues/272#issuecomment-1161463356).
@@ -30,7 +30,7 @@ rpm-ostree install rpmdevtools
 kmodgenca
 mokutil --import /etc/pki/akmods/certs/public_key.der
 
-### Build akmod-keys
+### Build akmods-keys
 bash setup.sh
 rpm-ostree akmods-keys-0.0.2-8.fc36.noarch.rpm
 ```
