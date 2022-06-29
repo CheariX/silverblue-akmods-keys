@@ -59,10 +59,6 @@ This command was incredibly usefull for me to find out whether a module was sign
 modinfo /sysroot/ostree/deploy/fedora/deploy/(rpm-ostree status --json | jq ".deployments[0].checksum" | sed 's/"//g').0/usr/lib/modules/*/extra/nvidia/nvidia.ko.xz | grep signature
 ```
 
-## Test if module is signed after rpm-ostree operation
-
-I found 
-
 # FAQ
 
 ## What is the status of this project?
