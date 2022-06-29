@@ -69,7 +69,7 @@ It works for me. Hopefully also for you. I did not do any deep testing with it.
 
 To be hontest, this was the first solution that worked for me. Maybe they could also be place in `/etc/pki/akmods` but I thought it would be a good idea to have a unique place that does not lead to conflicts.
 
-## Are they keys readable by regular users?
+## Are the keys readable by regular users?
 
 I checked the key location in
 ```
