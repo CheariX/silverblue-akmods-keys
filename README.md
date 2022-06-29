@@ -30,6 +30,9 @@ rpm-ostree install rpmdevtools
 kmodgenca
 mokutil --import /etc/pki/akmods/certs/public_key.der
 
+### Place your own MOK in this project directory ###
+cp /etc/pki/akmods/private/private_key.priv /etc/pki/akmods/certs/public_key.der . 
+
 ### Build akmod-keys
 bash setup.sh
 rpm-ostree akmods-keys-0.0.2-8.fc36.noarch.rpm
