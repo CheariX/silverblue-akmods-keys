@@ -7,6 +7,7 @@
 Akmods-keys provides my solution for [Issue 272](https://github.com/fedora-silverblue/issue-tracker/issues/272) in silverblue.
 
 On Fedora workstation, `akmods` signed the kernel module it creates in its `%post` operation.
+
 On Silverblue, the signing does not work because the keys, which are typically stored in `/etc/pki/akmods/{certs,private}` are [not accessible](https://github.com/fedora-silverblue/issue-tracker/issues/272#issuecomment-1161463356).
 
 `akmode-keys` solves this issue with @travier's [idea](https://github.com/fedora-silverblue/issue-tracker/issues/272#issuecomment-1143474213).
@@ -16,7 +17,7 @@ On Silverblue, the signing does not work because the keys, which are typically s
 Basic idea:
 
 - We create a local package `akmod-key` that provides these keys in `/etc/pki/akmods-keys/{certs,private}`
-- We let `akmod` use them with the configuration in `/etc//rpm/macros.kmodtool`
+- We let `akmods` use them with the configuration in `/etc/rpm/macros.kmodtool`
 
 # How to ..
 
@@ -32,7 +33,7 @@ mokutil --import /etc/pki/akmods/certs/public_key.der
 
 ### Build akmods-keys
 bash setup.sh
-rpm-ostree akmods-keys-0.0.2-8.fc36.noarch.rpm
+rpm-ostree install akmods-keys-0.0.2-8.fc36.noarch.rpm
 ```
 Note: `setup.sh` is very rudamentary. Please check before using.
 
