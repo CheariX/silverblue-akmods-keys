@@ -80,6 +80,16 @@ Permission denied (os error 13)
 They seem to be readable by root only.
 However, I'd recommend deleting the `akmods-keys-0.0.2-8.fc36.noarch.rpm` file.
 
+## Is this the final solution?
+
+No. It is still a [work-around](https://github.com/fedora-silverblue/issue-tracker/issues/272#issuecomment-1160653984) although it works pretty well (at least for me).
+
+According to [@travier](https://github.com/travier), the ideal solution would be (https://github.com/fedora-silverblue/issue-tracker/issues/272#issuecomment-1160653984):
+
+> The only potential fix that I'm aware of would be to store those keys into the kernel keyring and then request them while building the module during the rpm-ostree transaction.
+
+This is something, that `akmods-keys` cannot accomplish (or at least I don't know how) and Silverblue would have to adopt.
+
 
 # Acknowledgements
 
