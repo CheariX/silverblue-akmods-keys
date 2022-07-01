@@ -8,6 +8,7 @@ cp \
   /root/rpmbuild/SOURCES
 rpmbuild -ba akmods-keys.spec
 mv /root/rpmbuild/RPMS/noarch/akmods-keys-0.0.2-8.fc36.noarch.rpm .
-rm -df \
-  $(find /root/rpmbuild -type f | grep -E 'akmods-keys|public_key.der|private_key.priv|macros.kmodtool') \
-  $(find /root/rpmbuild -type d | sort -r)
+rm -f $(find /root/rpmbuild -type f | grep -E 'akmods-keys|public_key.der|private_key.priv|macros.kmodtool')
+find /root/rpmbuild -type d | sort -r | while read d; do
+  rm -df "$d" 2>/dev/null
+done
