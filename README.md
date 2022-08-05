@@ -89,6 +89,7 @@ According to [@travier](https://github.com/travier), the ideal solution would be
 > The only potential fix that I'm aware of would be to store those keys into the kernel keyring and then request them while building the module during the rpm-ostree transaction.
 
 This is something that `akmods-keys` cannot accomplish (or at least I don't know how), and Fedora Silverblue would have to adopt.
+Any further development/investigation should be moved to the CoreOS issue: https://github.com/coreos/rpm-ostree/issues/3885
 
 
 # Acknowledgements
