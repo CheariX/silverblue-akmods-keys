@@ -50,8 +50,8 @@ install -pm 0640 %{SOURCE2} %{buildroot}%{_sysconfdir}/rpm/
 %attr(0644,root,root) %{_sysconfdir}/rpm/macros.kmodtool
 
 %changelog
-* Mon June 28 2022 Christian Mainka <Christian.Mainka@rub.de> - 0.0.2
+* Tue Jun 28 2022 Christian Mainka <Christian.Mainka@rub.de> - 0.0.2
 - Used macros.kmodtool to avoid filename conflicts
 
-* Mon June 27 2022 Christian Mainka <Christian.Mainka@rub.de> - 0.0.1
+* Mon Jun 27 2022 Christian Mainka <Christian.Mainka@rub.de> - 0.0.1
 - First Version
