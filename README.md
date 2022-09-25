@@ -33,7 +33,7 @@ mokutil --import /etc/pki/akmods/certs/public_key.der
 
 ### Build akmods-keys
 bash setup.sh
-rpm-ostree install akmods-keys-0.0.2-8.fc36.noarch.rpm
+rpm-ostree install akmods-keys-0.0.2-8.fc$(rpm -E %fedora).noarch.rpm
 ```
 Note: `setup.sh` is very rudimentary. Please check before using.
 
