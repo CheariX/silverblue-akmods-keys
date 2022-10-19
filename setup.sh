@@ -20,10 +20,6 @@ sudo setfacl -R -m $USER:r ./rpmbuild/SOURCES
 // keep layered packages as minimal as possible
 toolbox run sudo dnf install -y bubblewrap rpmdevtools
 
-// Disable SUID flag for bwrap, just in case
-// (It's already disabled by default)
-toolbox run sudo chmod g-s /usr/bin/bwrap
-
 // Setup a chroot-like environment to isolate 
 // user home directory from the real one.
 // The current directory becomes the home directory.
