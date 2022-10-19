@@ -18,7 +18,7 @@ sudo setfacl -R -m $USER:r ./rpmbuild/SOURCES
 
 // Use toolbox instead of rpm-ostree, to
 // keep layered packages as minimal as possible
-toolbox run sudo dnf install -y bwrap rpmdevtools
+toolbox run sudo dnf install -y bubblewrap rpmdevtools
 
 // Disable SUID flag for bwrap, just in case
 // (It's already disabled by default)
