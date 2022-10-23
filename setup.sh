@@ -1,9 +1,6 @@
-#!/bin/sh
-
 set -e
 
 mkdir -p ./rpmbuild/SOURCES
-mkdir -p ./tmp
 
 sudo cp \
   macros.kmodtool \
@@ -11,18 +8,18 @@ sudo cp \
   /etc/pki/akmods/certs/public_key.der \
   ./rpmbuild/SOURCES
 
-// This makes your private key accessible 
-// to your current user and its programs.
-// DO NOT DO THIS IF YOU ARE NOT SURE
+## This makes your private key accessible 
+## to your current user and its programs.
+## DO NOT DO THIS IF YOU ARE NOT SURE
 sudo setfacl -R -m $USER:r ./rpmbuild/SOURCES
 
-// Use toolbox instead of rpm-ostree, to
-// keep layered packages as minimal as possible
+## Use toolbox instead of rpm-ostree, to
+## keep layered packages as minimal as possible
 toolbox run sudo dnf install -y bubblewrap rpmdevtools
 
-// Setup a chroot-like environment to isolate 
-// user home directory from the real one.
-// The current directory becomes the home directory.
+## Setup a chroot-like environment to isolate 
+## user home directory from the real one.
+## The current directory becomes the home directory.
 toolbox run bwrap \
     --proc /proc \
     --ro-bind /usr /usr \
@@ -46,6 +43,6 @@ toolbox run bwrap \
     --chdir /home \
     rpmbuild -ba akmods-keys.spec
 
-// Clean up unnecessary messes
+## Clean up unnecessary messes
 mv ./rpmbuild/RPMS/noarch/* .
 rm -rf ./rpmbuild
