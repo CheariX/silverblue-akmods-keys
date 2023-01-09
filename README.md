@@ -4,7 +4,7 @@
 
 # What is akmods-keys?
 
-`akmods-keys` provides my solution for [Issue 272](https://github.com/fedora-silverblue/issue-tracker/issues/272) on Fedora Silverblue.
+`akmods-keys` provides my solution for [Issue 272](https://github.com/fedora-silverblue/issue-tracker/issues/272) on Fedora Silverblue (and its variants, such as Kinoite). 
 
 On Fedora Workstation, `akmods` signs the kernel modules it creates in its `%post` operation.
 
