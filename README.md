@@ -25,14 +25,18 @@ Basic idea:
 
 ```sh
 ### Requirements ###
-rpm-ostree install rpmdevtools
+rpm-ostree install --apply-live rpmdevtools akmods
 
 ### Install your Machine Owner Key (MOK) ###
-kmodgenca
-mokutil --import /etc/pki/akmods/certs/public_key.der
+sudo kmodgenca
+sudo mokutil --import /etc/pki/akmods/certs/public_key.der
+
+## Clone this project
+git clone https://github.com/CheariX/silverblue-akmods-keys
+cd silverblue-akmods-keys
 
 ### Build akmods-keys
-bash setup.sh
+sudo bash setup.sh
 rpm-ostree install akmods-keys-0.0.2-8.fc$(rpm -E %fedora).noarch.rpm
 ```
 Note: `setup.sh` is very rudimentary. Please check before using.
