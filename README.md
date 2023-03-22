@@ -4,7 +4,7 @@
 
 # What is akmods-keys?
 
-`akmods-keys` provides my solution for [Issue 272](https://github.com/fedora-silverblue/issue-tracker/issues/272) on Fedora Silverblue (and its variants, such as Kinoite). 
+`akmods-keys` provides my solution for [Issue 272](https://github.com/fedora-silverblue/issue-tracker/issues/272) on Fedora Silverblue (and its variants, such as Kinoite).
 
 On Fedora Workstation, `akmods` signs the kernel modules it creates in its `%post` operation.
 
@@ -58,11 +58,12 @@ Some notes to myself :)
 
 OSTrees are located in `/sysroot/ostree/deploy/fedora/deploy/`.
 
-This command was handy for me to find out whether `akmods` signed a module after an `rpm-ostree` operation without rebooting the system.
+This `fish` command was handy for me to find out whether `akmods` signed a module after an `rpm-ostree` operation without rebooting the system.
 
 ```sh
 modinfo -F signature /sysroot/ostree/deploy/fedora/deploy/(rpm-ostree status --json | jq -r ".deployments[0].checksum").0/usr/lib/modules/*/extra/nvidia*/nvidia.ko.xz
 ```
+Change `(rpm-ostree...` to `$(rpm-ostree` for bash compatiblity.
 
 # FAQ
 
