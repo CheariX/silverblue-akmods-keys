@@ -4,7 +4,7 @@
 
 # What is akmods-keys?
 
-`akmods-keys` provides my solution for [Issue 272](https://github.com/fedora-silverblue/issue-tracker/issues/272) on Fedora Silverblue (and its variants, such as Kinoite).
+`akmods-keys` provides my solution for [Issue 499](https://github.com/fedora-silverblue/issue-tracker/issues/499) ([Issue 272](https://github.com/fedora-silverblue/issue-tracker/issues/272)) on Fedora Silverblue (and its variants, such as Kinoite).
 
 On Fedora Workstation, `akmods` signs the kernel modules it creates in its `%post` operation.
 
@@ -19,7 +19,7 @@ Basic idea:
 - We create a local package `akmods-keys` that provides these keys in `/etc/pki/akmods-keys/{certs,private}`.
 - We let the original `akmods` use them, but with the configuration in `/etc/rpm/macros.kmodtool` that points to our keys in `akmods-keys`.
 
-# How to ..
+# How to
 
 ## .. use this project?
 
@@ -39,16 +39,18 @@ cd silverblue-akmods-keys
 sudo bash setup.sh
 rpm-ostree install akmods-keys-0.0.2-8.fc$(rpm -E %fedora).noarch.rpm
 ```
+
 Note: `setup.sh` is very rudimentary. Please check before using.
 
 ## .. install modules?
 
 I tested it with
+
 ```sh
 rpm-ostree install akmod-nvidia akmod-VirtualBox
 ```
-The modules are automatically signed.
 
+The modules are automatically signed.
 
 # Quriks
 
@@ -63,6 +65,7 @@ This `fish` command was handy for me to find out whether `akmods` signed a modul
 ```sh
 modinfo -F signature /sysroot/ostree/deploy/fedora/deploy/(rpm-ostree status --json | jq -r ".deployments[0].checksum").0/usr/lib/modules/*/extra/nvidia*/nvidia.ko.xz
 ```
+
 Change `(rpm-ostree...` to `$(rpm-ostree` for bash compatiblity.
 
 # FAQ
@@ -78,10 +81,12 @@ To be honest, this was the first solution that worked for me. Maybe they could a
 ## Are the keys readable by regular users?
 
 I checked the key location in
+
 ```
 ls -al /sysroot/ostree/deploy/fedora/deploy/(rpm-ostree status --json | jq ".deployments[0].checksum" | sed 's/"//g').0/etc/pki/akmods-keys/{certs,private}
 Permission denied (os error 13)
 ```
+
 They seem to be readable by root only.
 However, I'd recommend deleting the `akmods-keys-0.0.2-8.fc36.noarch.rpm` file.
 
@@ -89,13 +94,12 @@ However, I'd recommend deleting the `akmods-keys-0.0.2-8.fc36.noarch.rpm` file.
 
 No. It is still a [work-around](https://github.com/fedora-silverblue/issue-tracker/issues/272#issuecomment-1160653984), although it works pretty well (at least for me).
 
-According to [@travier](https://github.com/travier), the ideal solution would be (https://github.com/fedora-silverblue/issue-tracker/issues/272#issuecomment-1160653984):
+According to [@travier](https://github.com/travier), the ideal solution would be (<https://github.com/fedora-silverblue/issue-tracker/issues/272#issuecomment-1160653984>):
 
 > The only potential fix that I'm aware of would be to store those keys into the kernel keyring and then request them while building the module during the rpm-ostree transaction.
 
 This is something that `akmods-keys` cannot accomplish (or at least I don't know how), and Fedora Silverblue would have to adopt.
-Any further development/investigation should be moved to the CoreOS issue: https://github.com/coreos/rpm-ostree/issues/3885
-
+Any further development/investigation should be moved to the CoreOS issue: <https://github.com/coreos/rpm-ostree/issues/3885>
 
 # Acknowledgements
 
